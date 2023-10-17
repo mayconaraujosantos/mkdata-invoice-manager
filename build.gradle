@@ -19,6 +19,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version "${springBootVersion}"
 	id 'io.spring.dependency-management' version "${springDependencyManager}"
+	id 'com.diffplug.spotless' version "${spotlesPluginVersion}"
+	id 'jacoco'
 	id 'org.sonarqube' version "${sonarqubePlugin}"
 	id 'com.github.spotbugs' version "${spotbugsPluginVersion}"
 }
@@ -52,6 +54,47 @@ dependencies {
 	developmentOnly "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation  "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
+
+jacoco {
+    toolVersion = "0.8.9"
+}
+
+jacocoTestReport {
+    dependsOn test
+
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                "com.mkdata.invoicesmanager.application.mapper/**",
+                "com.mkdata.invoicesmanager.application.dto/**",
+                "com.mkdata.invoicesmanager.infrastructure.exception/**",
+            ])
+        }))
+    }
+
+    reports {
+        xml {
+            enabled true
+            xml.outputLocation.set(layout.buildDirectory.file("$buildDir/jacoco/jacoco.xml"))
+        }
+
+        html {
+            enabled true
+            html.outputLocation.set(layout.buildDirectory.dir("$buildDir/reports/jacoco"))
+        }
+
+    }
+}
+
+jacocoTestCoverageVerification {
+   violationRules {
+       rule {
+           limit {
+               minimum = 0.1
+           }
+       }
+   }
 }
 
 sonar {
