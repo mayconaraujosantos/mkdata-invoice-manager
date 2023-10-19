@@ -1,1 +1,3 @@
 rootProject.name = 'invoicesmanager'
+
+include 'invoices-collector'

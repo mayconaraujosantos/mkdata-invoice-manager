@@ -1,13 +1,13 @@
-package com.mkdata.invoicesmanager;
+package com.mkdata.invoicescollector;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InvoicesmanagerApplication {
+public class InvoicescollectorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(InvoicesmanagerApplication.class, args);
+		SpringApplication.run(InvoicescollectorApplication.class, args);
 	}
 
 }

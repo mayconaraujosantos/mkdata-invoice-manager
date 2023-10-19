@@ -1,0 +1,31 @@
+ext {
+	reactorVersion = '3.5.10'
+	lombokVersion = '1.18.20'
+	mapStructVersion = '1.5.3.Final'
+	hibernateValidatorVersion = '8.0.0.Final'
+	springdocVersion = '2.0.4'
+	mongodbVersion = '3.1.4'
+	assertjVersion = '3.24.2'
+	htmlUnitVersion = '2.70.0'
+	micrometerVersion = '1.1.5'
+
+	sharedDependencies = [
+		"org.springframework.boot:spring-boot-starter:${springBootVersion}",
+		"org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}",
+		"org.springframework.boot:spring-boot-starter-web:${springBootVersion}",
+		"org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}",
+		"org.springframework.boot:spring-boot-starter-data-mongodb:${mongodbVersion}",
+		"io.micrometer:micrometer-tracing-bridge-brave:${micrometerVersion}",
+		"net.sourceforge.htmlunit:htmlunit:${htmlUnitVersion}"
+	]
+
+	sharedDevDependencies = [
+		"org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+	]
+
+	sharedTestDependencies = [
+		"org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
+		"io.projectreactor:reactor-test:${reactorVersion}",
+		"org.assertj:assertj-core:${assertjVersion}"
+	]
+}

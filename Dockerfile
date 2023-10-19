@@ -10,7 +10,7 @@ RUN ./gradlew clean build -x test
 
 FROM adoptopenjdk:17-jre-hotspot
 
-COPY --from=builder /app/invoicesmanager/build/libs/*.jar /app/invoicesmanager.jar
+COPY --from=builder /app/invoices-collector/build/libs/*.jar /app/invoices-collector.jar
 
 EXPOSE 8080
 
