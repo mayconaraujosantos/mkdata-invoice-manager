@@ -1,0 +1,4 @@
+group = "org.mkdata.invoices-collector"
+version = "1.0.0"
+
+apply from: '../dependencies.gradle'

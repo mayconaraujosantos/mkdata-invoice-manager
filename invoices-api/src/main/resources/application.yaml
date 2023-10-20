@@ -1,0 +1,17 @@
+spring:
+    application:
+        name: mkdata-invoices-api
+
+    data:
+        mongodb:
+            uri: ${MONGO_URI}
+
+
+server:
+    port: 8083
+logging:
+    level:
+        org:
+            springframework:
+                data:
+                    mongodb: DEBUG
