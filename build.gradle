@@ -66,17 +66,10 @@ subprojects {
 		implementation sharedDependencies
 		developmentOnly sharedDevDependencies
 		testImplementation sharedTestDependencies
-//		implementation "org.springframework.boot:spring-boot-starter-data-mongodb:${mongodbVersion}"
-//		implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
-//		implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-//		implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}"
-//		implementation  "net.sourceforge.htmlunit:htmlunit:${htmlUnitVersion}"
-//		compileOnly 'org.projectlombok:lombok'
-//		annotationProcessor 'org.projectlombok:lombok'
-//		annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
-//		developmentOnly "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
-//		annotationProcessor 'org.projectlombok:lombok'
-//		testImplementation  "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
 	}
 }
 
@@ -100,9 +93,7 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: [
-                "com.mkdata.invoicesmanager.application.mapper/**",
-                "com.mkdata.invoicesmanager.application.dto/**",
-                "com.mkdata.invoicesmanager.infrastructure.exception/**",
+
             ])
         }))
     }
@@ -110,12 +101,12 @@ jacocoTestReport {
     reports {
         xml {
             enabled true
-            xml.outputLocation.set(layout.buildDirectory.file("build/jacoco/jacoco.xml"))
+            xml.outputLocation.set(layout.buildDirectory.file("jacoco/jacoco.xml"))
         }
 
         html {
             enabled true
-            html.outputLocation.set(layout.buildDirectory.dir("build/reports/jacoco"))
+            html.outputLocation.set(layout.buildDirectory.dir("reports/jacoco"))
         }
 
     }
@@ -139,6 +130,15 @@ sonar {
   }
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+
+bootRun {
+	enabled = false
+}
+
+bootJar {
+	enabled = false
+}
+
+bootBuildImage{
+	enabled = false
 }
