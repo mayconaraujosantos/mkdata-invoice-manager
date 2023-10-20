@@ -1,6 +1,6 @@
 spring:
     application:
-        name: mkdata-invoices-collector
+        name: mkdata-invoices-api
 
     data:
         mongodb:
