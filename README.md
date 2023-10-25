@@ -37,3 +37,5 @@
 **US4.2 - Salvar dados coletados**
 - [ ] O sistema deve armazenar os dados coletados em uma estrutura pré-definida no banco de dados.
 - [ ] Em caso de falha na raspagem, o sistema deve registrar o erro para análise posterior.
+
+- [ ] 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
