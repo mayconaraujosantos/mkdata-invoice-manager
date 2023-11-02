@@ -12,6 +12,7 @@ buildscript {
 		mongodbVersion = '3.1.4'
 		lombokVersion = '1.18.20'
 		htmlUnitVersion = '2.70.0'
+		flapdoodleVersion = '4.9.3'
    }
 	repositories {
 		mavenCentral()
@@ -61,6 +62,7 @@ subprojects {
 		annotationProcessor 'org.projectlombok:lombok'
 		annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testImplementation "de.flapdoodle.embed:de.flapdoodle.embed.mongo:${flapdoodleVersion}"
 		implementation 'org.jetbrains:annotations:23.0.0'
 
 		implementation sharedDependencies
